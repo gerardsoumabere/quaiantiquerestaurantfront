@@ -26,6 +26,13 @@ const getRouteByUrl = (url) => {
 // Fonction pour charger le contenu de la page
 const LoadContentPage = async () => {
   const path = window.location.pathname;
+  
+  // Redirection de index.html vers la page d'accueil TODO :Ne charge actuellment pas le contenu de la page index
+  if (path === "/index.html") {
+    window.history.replaceState({}, "", "/");
+    path = "/"; 
+  }
+
   // Récupération de l'URL actuelle
   const actualRoute = getRouteByUrl(path);
   // Récupération du contenu HTML de la route
